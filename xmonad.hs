@@ -44,8 +44,8 @@ myKeys =
     , ( "<XF86AudioLowerVolume>",  spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
     , ( "<XF86AudioMute>",         spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
     , ( "<XF86AudioMicMute>",      spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle")
-    -- , ( "", spawn "inc_brightness")
-    -- , ( "", spawn "dec_brightness")
+    , ( "<XF86MonBrightnessUp>",   spawn "lux -a 10%")
+    , ( "<XF86MonBrightnessDown>", spawn "lux -s 10%")
     ]
 
 myLayoutHook = smartBorders . avoidStruts $ spacingWithEdge myPadding $ layoutHook def
