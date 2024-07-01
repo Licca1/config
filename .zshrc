@@ -70,7 +70,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git 
+  history 
+  sudo
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,22 +105,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+
+ZSH_AUTOSUGGEST_STRATEGY=completion 
+
+
 alias neofetch='neofetch --source $HOME/.config/neofetch/ahegao.txt'
+alias cl="clear"
+alias serve="python3 -m http.server --directory ."
 
 export PATH=$PATH:~/.local/bin
-
-alias inc_brightness="$HOME/.config/scripts/bri.sh 100"
-alias dec_brightness="$HOME/.config/scripts/bri.sh -100"
-alias _q="$HOME/.config/scripts/shutdown.sh"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '$HOME/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-source /usr/share/nvm/init-nvm.sh
-
-alias serve="python3 -m http.server --directory ."
 
 # Use ~~ as the trigger sequence instead of the default **
 # export FZF_COMPLETION_TRIGGER='~~'
@@ -153,5 +157,7 @@ setxkbmap -layout us && setxkbmap -layout us,ua;
 setxkbmap -option caps:none;
 setxkbmap -option grp:caps_toggle;
 
-export PATH=$PATH:$(cat ~/.choosenim/current)/bin
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:/opt/piavpn/bin
+
+eval "$(starship init zsh)"
+
